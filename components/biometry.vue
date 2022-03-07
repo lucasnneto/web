@@ -1,18 +1,16 @@
 <template>
   <div
-    class="biometry relative d-flex justify-center"
-    style="padding: 0 !important"
+    class="biometry"
   >
-    <div v-if="isVideoMode" class="crop relative">
-      <video id="video" height="100%" class="absolute"></video>
+    <div v-if="isVideoMode" class="crop">
+      <video id="video" height="100%"></video>
     </div>
     <canvas
       v-show="!isVideoMode"
       id="canvas"
       class="crop2"
-      style="width: 110% !important"
     ></canvas>
-    <v-btn v-if="isVideoMode" fab class="absolute button" @click="capture">
+    <v-btn v-if="isVideoMode" fab class="button" @click="capture">
       <v-icon>mdi-camera</v-icon>
     </v-btn>
   </div>
@@ -87,41 +85,23 @@ export default Vue.extend({
 });
 </script>
 <style lang="scss" scoped>
-.crop {
-  overflow: hidden;
-  display: flex;
-  justify-content: center;
+
+.biometry, video{
   width: 100%;
+  height: auto;
 }
-
-.crop2 {
-  display: block;
-  // justify-content: center;
-  // width: 100%;
+#canvas{
+  max-width: 100%;
 }
-
-#video {
+video{
   transform: rotateY(180deg);
   -webkit-transform: rotateY(180deg); /* Safari and Chrome */
   -moz-transform: rotateY(180deg); /* Firefox */
 }
-#canvas {
-  max-height: 100%;
-}
-.biometry {
-  height: 100%;
-  width: 100%;
-}
-.absolute {
+
+.button{
+  z-index: 99999;
   position: absolute;
-}
-.relative {
-  position: relative;
-}
-.button {
-  bottom: 0;
-  margin-left: 40%;
-  margin-right: 40%;
-  margin-bottom: 20px;
+  left: 44%;
 }
 </style>

@@ -1,12 +1,5 @@
 <template>
-  <v-card
-    :height="height"
-    :width="width"
-    :class="{ 'rounded-0': $vuetify.breakpoint.xs }"
-    class="px-6 py-10"
-  >
-    <biometry />
-  </v-card>
+  <biometry />
 </template>
 
 <script lang="ts">
@@ -28,12 +21,6 @@ export default Vue.extend({
     ...mapState("client", ["clientTaxId"]),
     isLegalPerson() {
       return this.clientTaxId?.length !== 11;
-    },
-    width() {
-      return this.$vuetify.breakpoint.smAndUp ? 360 : "100%";
-    },
-    height() {
-      return this.$vuetify.breakpoint.xs ? "100%" : 640;
     },
   },
 
