@@ -1,9 +1,17 @@
 <template>
-  <div class="biometry relative d-flex justify-center">
+  <div
+    class="biometry relative d-flex justify-center"
+    style="padding: 0 !important"
+  >
     <div v-if="isVideoMode" class="crop relative">
       <video id="video" height="100%" class="absolute"></video>
     </div>
-    <canvas v-show="!isVideoMode" id="canvas" class="absolute"></canvas>
+    <canvas
+      v-show="!isVideoMode"
+      id="canvas"
+      class="crop2"
+      style="width: 110% !important"
+    ></canvas>
     <v-btn v-if="isVideoMode" fab class="absolute button" @click="capture">
       <v-icon>mdi-camera</v-icon>
     </v-btn>
@@ -66,6 +74,14 @@ export default Vue.extend({
       this.videoStream.getTracks().forEach(function (track) {
         track.stop();
       });
+      const dataURI = canvas.toDataURL("image/jpeg");
+      this.baixarImg(dataURI);
+    },
+    baixarImg(base64) {
+      const a = document.createElement("a");
+      a.href = base64;
+      a.download = "Image.png";
+      a.click();
     },
   },
 });
@@ -77,6 +93,13 @@ export default Vue.extend({
   justify-content: center;
   width: 100%;
 }
+
+.crop2 {
+  display: block;
+  // justify-content: center;
+  // width: 100%;
+}
+
 #video {
   transform: rotateY(180deg);
   -webkit-transform: rotateY(180deg); /* Safari and Chrome */
