@@ -79,20 +79,6 @@ export default Vue.extend({
 });
 </script>
 <style lang="scss" scoped>
-@media (max-width: 800px) {
-  .biometry,
-  video {
-    width: 100%;
-    height: auto;
-  }
-
-  .button {
-    z-index: 99999;
-    position: absolute;
-    left: 44%;
-  }
-}
-
 .biometry,
 video {
   width: 450px;
@@ -113,5 +99,19 @@ video {
   z-index: 99999;
   position: absolute;
   left: 48%;
+}
+
+@media (max-width: 800px) {
+  .biometry,
+  video {
+    width: 100% !important;
+    height: auto !important;
+  }
+
+  .button {
+    z-index: 99999;
+    position: absolute;
+    left: 44%;
+  }
 }
 </style>
