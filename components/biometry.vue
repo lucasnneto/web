@@ -1,15 +1,9 @@
 <template>
-  <div
-    class="biometry"
-  >
+  <div class="biometry">
     <div v-if="isVideoMode" class="crop">
       <video id="video" height="100%"></video>
     </div>
-    <canvas
-      v-show="!isVideoMode"
-      id="canvas"
-      class="crop2"
-    ></canvas>
+    <canvas v-show="!isVideoMode" id="canvas" class="crop2"></canvas>
     <v-btn v-if="isVideoMode" fab class="button" @click="capture">
       <v-icon>mdi-camera</v-icon>
     </v-btn>
@@ -85,23 +79,39 @@ export default Vue.extend({
 });
 </script>
 <style lang="scss" scoped>
+@media (max-width: 800px) {
+  .biometry,
+  video {
+    width: 100%;
+    height: auto;
+  }
 
-.biometry, video{
-  width: 100%;
-  height: auto;
+  .button {
+    z-index: 99999;
+    position: absolute;
+    left: 44%;
+  }
 }
-#canvas{
+
+.biometry,
+video {
+  width: 450px;
+  height: auto;
+  margin: auto;
+}
+
+#canvas {
   max-width: 100%;
 }
-video{
+video {
   transform: rotateY(180deg);
   -webkit-transform: rotateY(180deg); /* Safari and Chrome */
   -moz-transform: rotateY(180deg); /* Firefox */
 }
 
-.button{
+.button {
   z-index: 99999;
   position: absolute;
-  left: 44%;
+  left: 48%;
 }
 </style>
