@@ -1,7 +1,7 @@
 <template>
   <v-app>
-    <v-main class="primary darken-1">
-      <v-flex d-flex justify-center align-center fill-height>
+    <v-main>
+      <v-flex>
         <Nuxt />
       </v-flex>
     </v-main>
